@@ -1,0 +1,151 @@
+# EarthOps — Deep Dive Analysis
+
+## The Parent Company: PeopleMovers Inc.
+
+EarthOps isn't a standalone startup — it's a **vertical-specific spinoff** of **PeopleMovers**, a Detroit-based technology company founded by **Keith Zendler** (CEO). PeopleMovers is a broader "community development" platform, and EarthOps applies the same underlying technology to environmental sustainability.
+
+**Founded:** 2023
+**Headquarters:** Detroit, Michigan
+**Funding Status:** Unfunded (bootstrapped/self-funded per Tracxn)
+
+---
+
+## The Core Problem They Solve
+
+Environmental leaders (corporate sustainability officers, government officials, NGO directors) are **overwhelmed** by:
+- Fragmented environmental management tools
+- Disconnected reporting to shareholders, customers, and regulators
+- Siloed best practices — every organization reinventing the wheel
+- Difficulty training employees and vendors across distributed operations
+- No single place to coordinate supply chain sustainability
+
+**EarthOps' pitch:** One platform to "connect and manage all the dots of the environmental sustainability supply chain globally."
+
+---
+
+## The Platform: Feature Breakdown
+
+### 1. **Social Networking Layer**
+- Individual profiles for environmental professionals
+- Organization pages (companies, governments, NGOs)
+- Follow/following model like LinkedIn
+- Activity feeds showing what leaders/organizations are doing
+- Global directory of environmental stakeholders
+
+### 2. **Collaboration Hub**
+- **Groups:** Public or private workspaces for initiatives, teams, committees
+- **News & Info:** Press releases, blogs, document sharing
+- **Events:** Conferences, trainings, outreach, fundraisers
+- **Private Messaging:** Direct communication between members
+
+### 3. **Knowledge Management (The "Innovation Hub")**
+- **Procedures:** Upload SOPs and best practices
+- **Actions:** Assign tasks to employees, vendors, member organizations with tracking
+- **Innovation Hub:** Copy best practices from other entities worldwide
+- This is essentially a **GitHub for environmental procedures** — fork, adapt, deploy
+
+### 4. **Marketplace (B2B Services)**
+From the scraped data, they have extensive categories:
+- Recycling markets (scrap metal, cardboard, plastics, glass)
+- Waste management (hazardous, non-hazardous, medical, e-waste)
+- Equipment (balers, compactors)
+- Services (document shredding, transportation, warehousing)
+- Energy & emissions (renewable energy, GHG management)
+- Water management
+- Training & consulting
+
+This is a **two-sided marketplace**: Service providers list offerings; organizations request quotes.
+
+### 5. **Gamification: EarthPerks®**
+- Users earn points for engagement (posting, collaborating, completing actions)
+- Points redeemable for food, beverages, tickets, eco-products
+- Organizations can sponsor rewards to incentivize specific behaviors
+- **SaaS upsell:** Custom EarthPerks programs for initiatives outside the platform
+
+### 6. **Data & Analytics**
+- Reports on activities across stakeholders
+- Progress tracking on environmental initiatives
+- Outcome measurement for foundations/grantmakers
+
+---
+
+## Target Customer Segments (Go-to-Market)
+
+| Segment | Use Case |
+|---------|----------|
+| **Manufacturing & Distribution** | Supply chain sustainability, waste reduction, compliance |
+| **Governments & Cities** | Municipal environmental programs, multi-agency coordination |
+| **Industry Associations** | Member education, best practice sharing |
+| **Foundations** | Grantee coordination, outcome tracking, impact measurement |
+| **Healthcare/Education** | Facility management, regulatory compliance |
+| **Construction/Demolition** | C&D waste management, material recycling |
+| **Environmental Service Providers** | Customer acquisition, service delivery |
+
+---
+
+## Business Model
+
+**Freemium:**
+- Free to join and use basic features
+- Premium functionality requires payment (exact pricing not public)
+
+**Revenue Streams (Inferred):**
+1. **SaaS subscriptions** for premium features
+2. **Marketplace fees** (likely take on transactions or lead generation)
+3. **Custom EarthPerks programs** (white-label gamification)
+4. **Enterprise consulting/support** (getting organizations started)
+
+---
+
+## Competitive Landscape
+
+| Competitor | Differentiation |
+|------------|-----------------|
+| **LinkedIn** | General professional network — not environmental-specific |
+| **Salesforce Net Zero Cloud** | Enterprise carbon accounting — no social/network layer |
+| **Watershed** | Carbon measurement — no marketplace or collaboration |
+| **EcoVadis** | Supply chain sustainability ratings — not a network |
+| **RecycleTrack/Recyclebank** | Consumer-facing recycling rewards — not B2B |
+
+**EarthOps' moat:** The combination of **social network + knowledge repository + marketplace + gamification** in one platform specifically for environmental professionals.
+
+---
+
+## The Technology Stack (From Scraped Data)
+- Built on **PeopleMovers platform** (reused architecture)
+- **AngularJS** frontend (older framework — suggests legacy codebase)
+- **Bootstrap** UI framework
+- Mobile apps available (iOS/Android)
+
+---
+
+## Leadership Team
+
+| Role | Person | Background |
+|------|--------|------------|
+| **CEO & Founder** | Keith Zendler | 35+ years in recycling/solid waste management |
+| **Chief Sustainability Officer** | Daniel Gilbert | Sustainability expertise |
+| **CTO** | Avtar Gour | Technical leadership |
+| **VP International Development** | Okey Uche | Global expansion |
+| **Community Engagement, India** | Aloysius John | India market focus |
+
+---
+/
+## Strategic Positioning
+
+**The Vision:** Become the **"LinkedIn for environmental sustainability"** — the default professional network where environmental leaders connect, collaborate, and transact.
+
+**The Bet:** Environmental sustainability is becoming a core business function (ESG reporting, supply chain pressure, regulatory compliance). Organizations need better tools to coordinate these efforts across complex stakeholder networks.
+
+**The Risk:**
+- Platform chicken-and-egg problem (need users to attract users)
+- Competing against established enterprise tools (Salesforce, SAP)
+- Older tech stack may limit scalability
+
+---
+
+## Summary
+
+EarthOps is a **B2B vertical social platform** attempting to own the "operating system" for environmental sustainability collaboration. It's not just a directory or a marketplace — it's trying to be the **coordination layer** for how organizations plan, execute, and measure environmental initiatives together. Think of it as: *LinkedIn + Notion + Upwork + ClassDojo* — but specifically for sustainability professionals.
+
+The connection to PeopleMovers suggests this is part of a **platform strategy** where the same underlying technology gets white-labeled for different verticals (community development → environmental → potentially others).
