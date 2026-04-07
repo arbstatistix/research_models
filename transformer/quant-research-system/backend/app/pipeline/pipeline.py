@@ -1,3 +1,101 @@
+"""
+================================================================================
+QUANT RESEARCH PIPELINE - CORE PIPELINE LOGIC
+================================================================================
+
+This module implements the two-stage research pipeline that processes user
+prompts through refinement and expert research generation.
+
+PIPELINE STAGES:
+----------------
+
+    Stage 1: Prompt Refinement (Optional)
+    ─────────────────────────────────────
+    - Evaluates if the prompt needs refinement (short, vague, etc.)
+    - If yes, sends to refiner model to improve clarity and precision
+    - Uses structured JSON output when possible, falls back to plain text
+    - Skipped for detailed prompts (> 250 words or already technical)
+
+    Stage 2: Research Generation
+    ────────────────────────────
+    - Sends refined (or original) prompt to researcher model
+    - Uses expert system prompt for quantitative finance
+    - Generates equation-rich, rigorous responses
+    - Tracks process ID for monitoring/killing
+
+EXECUTION FLOW:
+---------------
+
+    User Prompt
+         │
+         ▼
+    ┌─────────────────────────────────────────────────────┐
+    │  should_refine(prompt)                               │
+    │  - Check word count (< 80 → refine)                  │
+    │  - Check for vague markers ("explain", "what is")   │
+    └─────────────────────────────────────────────────────┘
+         │
+         ├─── Yes ───┐
+         │           ▼
+         │    ┌─────────────────────────────────────────┐
+         │    │  refine_prompt(prompt)                   │
+         │    │  - Try structured JSON output            │
+         │    │  - Fall back to plain text               │
+         │    │  - 60 second timeout                     │
+         │    └─────────────────────────────────────────┘
+         │           │
+         │           ▼
+         │    Refined Prompt
+         │           │
+         ├───────────┘
+         │
+         ▼
+    ┌─────────────────────────────────────────────────────┐
+    │  run_researcher(prompt)                              │
+    │  - Register PID for tracking                         │
+    │  - Send to researcher model with expert prompt       │
+    │  - 120 second timeout                                │
+    │  - Unregister PID on completion                      │
+    └─────────────────────────────────────────────────────┘
+         │
+         ▼
+    Final Answer (Markdown with LaTeX)
+
+TIMEOUT HANDLING:
+-----------------
+Socket-level timeouts prevent indefinite hangs:
+- Refiner: 60 seconds
+- Researcher: 120 seconds (2x for longer responses)
+
+On timeout, the request fails with a clear error message.
+
+ERROR RECOVERY:
+---------------
+1. Structured JSON fails → Try plain text
+2. Refinement fails → Use original prompt
+3. Researcher fails → Return error response with details
+
+USAGE:
+------
+    from app.pipeline.pipeline import QuantResearchPipeline, PipelineConfig
+
+    config = PipelineConfig(
+        refiner_model="qwen3.5",
+        researcher_model="glm-4.7-flash"
+    )
+    pipeline = QuantResearchPipeline(config)
+    result = pipeline.process_prompt("What is arbitrage?")
+
+RELATIONSHIPS:
+--------------
+- Used by: app.api.routes (called via thread pool)
+- Uses: app.services.pid_manager (process tracking)
+- Uses: app.core.logger (logging)
+- Uses: ollama.chat (LLM inference)
+
+================================================================================
+"""
+
 from dataclasses import dataclass
 from typing import Dict, Any
 import logging
@@ -13,7 +111,7 @@ from concurrent.futures import ThreadPoolExecutor
 from ollama import chat, ResponseError
 from pydantic import BaseModel, Field
 
-from app.core.logger import setup_daily_logger
+from app.core.logger import setup_daily_logger, log_function_entry, log_function_exit
 from app.services.pid_manager import get_pid_manager
 
 # Timeout for Ollama requests (seconds)
