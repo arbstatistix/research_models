@@ -1,0 +1,237 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(255, 160, 40, 0.3);
+  color: #ffffff;
+}
+
+/* Markdown content styling */
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content .katex {
+  font-size: 1.05em;
+}
+
+.markdown-content .katex-display {
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+.markdown-content p {
+  margin-bottom: 12px;
+}
+
+.markdown-content pre {
+  background-color: #0d0d0d;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9em;
+  border: 1px solid #222222;
+}
+
+.markdown-content code {
+  background-color: #0d0d0d;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid #222222;
+}
+
+.markdown-content .inline-code {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-family: 'Roboto Mono', 'Consolas', monospace;
+}
+
+.markdown-content .code-block {
+  background-color: #0d0d0d;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid #222222;
+}
+
+.markdown-content .code-block code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.markdown-content li {
+  margin-bottom: 4px;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: #FFA028;
+  font-weight: 600;
+}
+
+.markdown-content h1 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 8px;
+}
+
+.markdown-content h2 {
+  font-size: 1.3em;
+  border-bottom: 1px solid #222222;
+  padding-bottom: 6px;
+}
+
+.markdown-content h3 {
+  font-size: 1.15em;
+}
+
+.markdown-content h4 {
+  font-size: 1.05em;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #FFA028;
+  padding-left: 16px;
+  margin-left: 0;
+  margin-bottom: 12px;
+  color: #b0b0b0;
+}
+
+.markdown-content strong {
+  color: #FFA028;
+  font-weight: 600;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid #333333;
+  margin: 20px 0;
+}
+
+/* Table styling */
+.markdown-table-wrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.markdown-table th,
+.markdown-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #333333;
+}
+
+.markdown-table th {
+  background-color: #1a1a1a;
+  color: #FFA028;
+  font-weight: 600;
+}
+
+.markdown-table tr:nth-child(even) {
+  background-color: #0d0d0d;
+}
+
+.markdown-table tr:hover {
+  background-color: #1a1a1a;
+}
+
+/* Legacy LaTeX content styling (keep for compatibility) */
+.latex-content .katex {
+  font-size: 1.05em;
+}
+
+.latex-content .katex-display {
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Focus styles */
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  user-select: none;
+}
+
+/* Monospace for data */
+.mono {
+  font-family: 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quant Research Pipeline Response",
+  "description": "Schema for the quant research pipeline API response",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/SuccessResponse"
+    },
+    {
+      "$ref": "#/definitions/ErrorResponse"
+    }
+  ],
+  "definitions": {
+    "SuccessResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "const": true
+        },
+        "used_refinement": {
+          "type": "boolean",
+          "description": "Whether the prompt was refined before sending to researcher"
+        },
+        "original_prompt": {
+          "type": "string",
+          "description": "The original user prompt"
+        },
+        "prompt_sent_to_researcher": {
+          "type": "string",
+          "description": "The prompt that was actually sent to the researcher (may be refined)"
+        },
+        "final_answer": {
+          "type": "string",
+          "description": "The researcher's response"
+        },
+        "error_type": {
+          "type": "null"
+        },
+        "error": {
+          "type": "null"
+        },
+        "status_code": {
+          "type": "null"
+        },
+        "traceback": {
+          "type": "null"
+        }
+      },
+      "required": ["success", "used_refinement", "original_prompt", "prompt_sent_to_researcher", "final_answer"]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "const": false
+        },
+        "used_refinement": {
+          "type": "boolean"
+        },
+        "original_prompt": {
+          "type": "string"
+        },
+        "prompt_sent_to_researcher": {
+          "type": "string"
+        },
+        "final_answer": {
+          "type": "null"
+        },
+        "error_type": {
+          "type": "string",
+          "description": "The type of error that occurred"
+        },
+        "error": {
+          "type": "string",
+          "description": "Error message"
+        },
+        "status_code": {
+          "type": ["integer", "null"],
+          "description": "HTTP status code if applicable"
+        },
+        "traceback": {
+          "type": ["string", "null"],
+          "description": "Full traceback for debugging"
+        }
+      },
+      "required": ["success", "error_type", "error"]
+    }
+  }
+}

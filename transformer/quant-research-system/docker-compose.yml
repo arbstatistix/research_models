@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - REFINER_MODEL=${REFINER_MODEL:-qwen3.5}
+      - RESEARCHER_MODEL=${RESEARCHER_MODEL:-qwen3.5}
+      - MAX_REFINE_WORDS=${MAX_REFINE_WORDS:-250}
+      - REFINER_TEMPERATURE=${REFINER_TEMPERATURE:-0.0}
+      - RESEARCHER_TEMPERATURE=${RESEARCHER_TEMPERATURE:-0.2}
+      - LOG_DIR=logs
+    volumes:
+      - ./backend/logs:/app/logs
+    networks:
+      - quant-research-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/frontend.Dockerfile
+    ports:
+      - "5173:4173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - quant-research-network
+
+networks:
+  quant-research-network:
+    driver: bridge
